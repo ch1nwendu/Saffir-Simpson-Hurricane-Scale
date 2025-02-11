@@ -1,0 +1,44 @@
+def classify_wind_speed(wind_speed):
+    """Classifies wind speed based on the Saffir-Simpson Hurricane Scale.
+
+    Args:
+        wind_speed: The wind speed in miles per hour (mph).
+
+    Returns:
+        A string describing the hurricane category or other relevant information.
+    """
+
+    try:
+        wind_speed = int(wind_speed)  # Convert input to integer
+
+        if wind_speed < 0:
+            return "Invalid input: Wind speed cannot be negative."
+
+        if wind_speed < 39:
+            return "Not a tropical storm or hurricane."
+        elif wind_speed < 74:
+            return "Tropical Storm"
+        elif wind_speed < 96:
+            return "Category 1: Very dangerous winds will produce some damage"
+        elif wind_speed < 111:
+            return "Category 2: Extremely dangerous winds will cause extensive damage"
+        elif wind_speed < 130:
+            return "Category 3: Devastating damage will occur"
+        elif wind_speed < 157:
+            return "Category 4: Catastrophic damage will occur"
+        else:
+            return "Category 5: Catastrophic damage; high devastation"
+
+    except ValueError:
+        return "Invalid input: Please enter a valid integer for wind speed."
+
+
+if __name__ == "__main__":
+    while True: # loop to allow multiple inputs
+        wind_speed_input = input("Enter wind speed in mph (or type 'exit'): ")
+
+        if wind_speed_input.lower() == 'exit': # exit condition
+            break
+        
+        result = classify_wind_speed(wind_speed_input)
+        print(result)
